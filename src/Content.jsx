@@ -1,21 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { FaTrashAlt } from 'react-icons/fa'
 
-const Content = () => {
-  const [items, setItems] = useState(JSON.parse(localStorage.getItem('toDoList')) || []
-    
-  )
-
-  const handleCheck = (id) => {
-    const listItems = items.map((item) => item.id === id ? {...item, checked: !item.checked} : item);
-    setItems(listItems);
-    localStorage.setItem('toDoList', JSON.stringify(listItems))
-  }
-
-  const handleDelete = (id) => {
-    const listItems = items.filter(item => item.id !== id)
-    setItems(listItems);
-  }
+const Content = ({ items, setItems, handleCheck, handleDelete }) => {
   return (
     <main>
       { items.length ?

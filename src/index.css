@@ -60,3 +60,35 @@ footer  {
   padding: 10px;
   background-color: #30ff29;
 }
+
+.year {
+  margin: 5px;
+  font-size: 20;
+  color: #e03cc8;
+}
+
+.length {
+  font-size: 40px;
+}
+
+.addForm {
+  width: 100%;
+  display: flex;
+}
+
+.addForm input {
+  flex: 1;
+}
+
+.addForm button {
+  width: 40px;
+  height: 40px;
+}
+
+.addForm button:hover {
+  background-color: #d9ec93;
+}
+
+.addForm button:focus {
+  background-color: #e493ec;
+}
