@@ -1,0 +1,62 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  text-align: center;
+  padding: 10px;
+  background-color: rgb(188, 149, 91);
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+main {
+  flex: 1;
+  text-align: center;
+  background-color: #a3a2a2;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  padding: 5px 30px;
+  margin-bottom: 5px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  background-color: #6b8e67;
+}
+
+li input {
+  width: 30px;
+  height: 30px;
+}
+
+li label {
+  font-size: 30px;
+}
+
+li svg {
+  width: 30px;
+  height: 30px;
+  color: #485047;
+}
+
+li svg:hover, li svg:focus {
+  outline: none;
+  color: #e14bf8;
+}
+
+footer  {
+  text-align: center;
+  padding: 10px;
+  background-color: #30ff29;
+}
