@@ -9,13 +9,16 @@ import AddItem from "./AddItem";
 
 function App() {
   const [items, setItems] = useState(JSON.parse(localStorage.getItem('toDoList')) || [
-      {id: 1, name: "eat some mushroom", checked: false},
-      {id: 2, name: "run around the world", checked: false},
-      {id: 3, name: "destroy capitalism", checked: false},
+      {id: 1, item: "eat some mushroom", checked: false},
+      {id: 2, item: "run around the world", checked: false},
+      {id: 3, item: "destroy capitalism", checked: false},
     ])
 
+    const [newItems, setNewItems] = useState("");
+    const [searchItems, setSearchItems] = useState("")
+
     const handleCheck = (id) => {
-      const listItems = items.map((item) => item.id === id ? {...item, checked: !item.checked} : item);
+      const listItems = items.map(item => item.id === id ? {...item, checked: !item.checked} : item);
       setItems(listItems);
       localStorage.setItem('toDoList', JSON.stringify(listItems))
     }
@@ -31,17 +34,32 @@ function App() {
       localStorage.setItem('toDoList', JSON.stringify(newItems))
     }
     
-    const addItem = name => {
+    const addItem = item => {
       const id = items.length ? (items[items.length - 1].id + 1) : 1;
-      const myNewTask = {id, name, checked: false};
-      const listItems = [...items, myNewTask];
+      const myNewTask = {id, checked: false, item,};
+      const listItems= [...items, myNewTask];
       setAndSaveItems(listItems)
+    }
+
+    const handleSubmit = e => {
+      e.preventDefault();
+      if (!newItems) {
+        return;
+        } else {
+        addItem(newItems);
+      }
+      console.log(newItems);
+      setNewItems("");
     }
 
   return (
     <div className="App">
       <Header />
-      <AddItem />
+      <AddItem 
+        newItems={newItems}
+        setNewItems={setItems}
+        handleSubmit={handleSubmit}
+      />
       <Content
         items={items}
         setItems={setItems}

@@ -17,7 +17,7 @@ const Content = ({ items, setItems, handleCheck, handleDelete }) => {
                 style={(item.checked) ? {textDecoration: "line-through", color: "lightblue"} : null}
                 onClick={ () => handleCheck(item.id) }  
               >
-                {item.name}
+                {item.item}
               </label>
               <FaTrashAlt
                 role='button'
