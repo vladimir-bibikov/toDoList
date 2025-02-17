@@ -4,6 +4,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Content from "./Content";
 import AddItem from "./AddItem";
+import SearchItem from "./SearchItem";
 
 
 
@@ -13,6 +14,19 @@ function App() {
       {id: 2, name: "run around the world", checked: false},
       {id: 3, name: "destroy capitalism", checked: false},
     ])
+
+  const [newItems, setNewItems] = useState("");
+  const [searchItem, setSearchItem] = useState("")
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (!newItems) {
+      return
+    } else {
+      addItem(newItems)
+    }
+    setNewItems("")
+  }
 
     const handleCheck = (id) => {
       const listItems = items.map((item) => item.id === id ? {...item, checked: !item.checked} : item);
@@ -41,9 +55,17 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <AddItem />
+      <AddItem 
+        newItems={newItems}
+        setNewItems={setNewItems}
+        handleSubmit={handleSubmit}
+      />
+      <SearchItem 
+        searchItem={searchItem}
+        setSearchItem={setSearchItem}
+      />
       <Content
-        items={items}
+        items={items.filter(item => item.name.toLowerCase().includes(searchItem.toLowerCase()))}
         setItems={setItems}
         handleCheck={handleCheck}
         handleDelete={handleDelete}
